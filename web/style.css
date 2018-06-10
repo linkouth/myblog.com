@@ -70,3 +70,55 @@ a {
     z-index: 1;
     content: "";
 }
+
+.layout-wrapper {
+    box-sizing: border-box;
+    max-width: 600px;
+    min-height: 480px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aliceblue;
+    border: 2px ;
+    border-radius: 3px;
+}
+
+.grid-item {
+    width: 25%;
+    float: left;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.grid-item:nth-child(even) {
+    width: calc(75% - 4px);
+}
+
+.grid-item input {
+    width: 100%;
+}
+
+.grid-item textarea {
+    width: calc(100% - 2px);
+}
+
+.grid-item + .english {
+    width: 50px;
+    margin-top: 24px;
+    float: left;
+}
+
+.grid-item + .aboutMe {
+    clear: left;
+}
+
+.grid-item + .agreement {
+    width: 20px;
+    margin-top: 24px;
+    float: left;
+}
+
+.submit {
+    align-items: center;
+    clear: left;
+}

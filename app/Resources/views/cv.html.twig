@@ -1,0 +1,68 @@
+{# app/Resources/views/cv.html.twig #}
+{% extends 'blog.html.twig' %}
+
+{% block content %}
+    <div class="layout-wrapper">
+        <div class="two-col-grid">
+            {{ form_start(form) }}
+            <div class="grid-item">
+                {{ form_label(form.name) }}
+            </div>
+            <div class="grid-item">
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="grid-item">
+                {{ form_label(form.surname) }}
+            </div>
+            <div class="grid-item">
+                {{ form_widget(form.surname) }}
+            </div>
+            <div class="grid-item">
+                {{ form_label(form.age) }}
+            </div>
+            <div class="grid-item">
+                {{ form_widget(form.age) }}
+            </div>
+            <div class="grid-item">
+                {{ form_label(form.email) }}
+            </div>
+            <div class="grid-item">
+                {{ form_widget(form.email) }}
+            </div>
+            <div class="grid-item">
+                {{ form_label(form.city) }}
+            </div>
+            <div class="grid-item">
+                {{ form_widget(form.city) }}
+            </div>
+            <div class="grid-item">
+                {{ form_label(form.university) }}
+            </div>
+            <div class="grid-item">
+                {{ form_widget(form.university) }}
+            </div>
+            <div class="grid-item">
+                {{ form_label(form.englishLevel) }}
+            </div>
+            <div class="grid-item english">
+                {{ form_widget(form.englishLevel) }}
+            </div>
+            <div class="grid-item aboutMe">
+                {{ form_label(form.aboutMe) }}
+            </div>
+            <div class="grid-item aboutMeArea">
+                {{ form_widget(form.aboutMe) }}
+            </div>
+            <div class="grid-item">
+                {{ form_label(form.agreement) }}
+            </div>
+            <div class="grid-item agreement">
+                {{ form_widget(form.agreement) }}
+            </div>
+            <div class="grid-item submit">
+                {{ form_widget(form.send) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

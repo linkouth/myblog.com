@@ -1,0 +1,15 @@
+{# app/Resources/views/blog.html.twig #}
+{% extends 'blog.html.twig' %}
+
+{% block content %}
+    <span>
+          <h2>Web-developer</h2>
+    </span>
+    {% for st in students %}
+        {{ st.getId }}
+        {{ st.getName }}
+        {{ st.getSurname }}
+        {{ st.getAge }}
+        <br />
+    {% endfor %}
+{% endblock %}
