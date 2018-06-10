@@ -2,14 +2,15 @@
 {% extends 'blog.html.twig' %}
 
 {% block content %}
-    <span>
-          <h2>Web-developer</h2>
-    </span>
-    {% for st in students %}
-        {{ st.getId }}
-        {{ st.getName }}
-        {{ st.getSurname }}
-        {{ st.getAge }}
+    <div class="layout-wrapper">
+    {% for candidate in candidates %}
+        {{ candidate.getId }}
+        {{ candidate.getName }}
+        {{ candidate.getSurname }}
+        {{ candidate.getAge }}
+        {{ candidate.getEmail }}
+        {{ candidate.getEnglishLevel }}
         <br />
     {% endfor %}
+    </div>
 {% endblock %}

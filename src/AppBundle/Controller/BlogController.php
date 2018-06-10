@@ -15,7 +15,7 @@ use \AppBundle\Form\CandidateType;
 class BlogController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      */
     public function indexAction()
     {
@@ -43,51 +43,63 @@ class BlogController extends Controller
      */
     public function showAction()
     {
-        $repository = $this->getDoctrine()->getRepository(Student::class);
+        $repository = $this->getDoctrine()->getRepository(Candidate::class);
 
-        $students = $repository->findAll();
+        $candidates = $repository->findAll();
 
-        return $this->render('show.html.twig', array('students' => $students));
+        return $this->render('show.html.twig', array('candidates' => $candidates));
     }
 
+//    /**
+//     * @Route("/addStudent")
+//     */
+//    public function addStudentAction(Request $request)
+//    {
+//        $newStudent = new Student();
+//
+//        $form = $this->createFormBuilder($newStudent)
+//            ->add('name', TextType::class)
+//            ->add('surname', TextType::class)
+//            ->add('age', TextType::class)
+//            ->add('save', SubmitType::class)
+//            ->getForm();
+//
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $newStudent = $form->getData();
+//
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->persist($newStudent);
+//            $entityManager->flush();
+//
+//            return $this->redirectToRoute('show');
+//        }
+//
+//        return $this->render('projects.html.twig', array(
+//            'form' => $form->createView()
+//        ));
+//    }
+
     /**
-     * @Route("/addStudent")
-     */
-    public function addStudentAction(Request $request)
-    {
-        $newStudent = new Student();
-
-        $form = $this->createFormBuilder($newStudent)
-            ->add('name', TextType::class)
-            ->add('surname', TextType::class)
-            ->add('age', TextType::class)
-            ->add('save', SubmitType::class)
-            ->getForm();
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $newStudent = $form->getData();
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($newStudent);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('show');
-        }
-
-        return $this->render('projects.html.twig', array(
-            'form' => $form->createView()
-        ));
-    }
-
-    /**
-     * @Route("/cv")
+     * @Route("/cv", name="candidateForm")
      */
     public function addProjectAction(Request $request) {
         $newCandidate = new Candidate();
 
         $form = $this->createForm(CandidateType::class, $newCandidate);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $newCandidate = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newCandidate);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('show');
+        }
 
         return $this->render('cv.html.twig', array(
            'form' => $form->createView()

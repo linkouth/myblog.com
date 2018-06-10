@@ -30,7 +30,16 @@ class CandidateType extends AbstractType
             ->add('email', TextType::class)
             ->add('city', TextType::class)
             ->add('university', TextType::class)
-            ->add('englishLevel', ChoiceType::class)
+            ->add('englishLevel', ChoiceType::class, array(
+                'choices' => array(
+                    'A1' => 'A1',
+                    'A2' => 'A2',
+                    'B1' => 'B1',
+                    'B2' => 'B2',
+                    'C1' => 'C1',
+                    'C2' => 'C2',
+                )
+            ))
             ->add('aboutMe', TextareaType::class)
             ->add('agreement', CheckboxType::class, array('mapped' => false))
             ->add('send', SubmitType::class)
